@@ -1,0 +1,11 @@
+test-output
+*/test-output
+.classpath
+.project
+.iml
+.settings/
+*.classpath
+*.project
+*.settings/
+.idea/
+*.idea/

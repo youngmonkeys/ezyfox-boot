@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.tvd12</groupId>
+		<artifactId>ezyfox</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>ezyfox-boot</artifactId>
+	<packaging>pom</packaging>
+
+	<name>ezyfox-boot</name>
+	<url>https://youngmonkeys.org/project/ezyfox-sever/</url>
+	<description>
+		Auto Configuration for which project use ezyfox
+	</description>
+
+	<organization>
+		<name>Young Monkeys</name>
+		<url>https://youngmonkeys.org/</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<connection>scm:git:git@github.com:youngmonkeys/ezyfox-boot.git</connection>
+		<developerConnection>scm:git:git@github.com:youngmonkeys/ezyfox-boot.git</developerConnection>
+		<url>https://github.com/youngmonkeys/ezyfox-boot</url>
+	</scm>
+
+	<issueManagement>
+		<system>Github</system>
+		<url>https://github.com/youngmonkeys/ezyfox-boot/issues</url>
+	</issueManagement>
+
+	<developers>
+		<developer>
+			<name>Ta Van Dung</name>
+			<email>itprono3@gmail.com</email>
+			<organization>Young Monkeys</organization>
+			<organizationUrl>https://youngmonkeys.org/</organizationUrl>
+		</developer>
+	</developers>
+	<modules>
+		<module>ezyfox-boot-autorconfigure</module>
+	</modules>
+</project>
