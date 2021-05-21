@@ -7,7 +7,7 @@
 		<artifactId>ezyfox-boot</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<artifactId>ezyfox-boot-autorconfigure</artifactId>
+	<artifactId>ezyfox-boot-autoconfigure</artifactId>
 	
 	<properties>
 		<ezy.data.version>1.1.7</ezy.data.version>
