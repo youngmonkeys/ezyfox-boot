@@ -56,7 +56,7 @@ public class MongoConfiguration implements
 		return builder.build();
 	}
 	
-	private MongoClient newMongoClient() {
+	protected MongoClient newMongoClient() {
 		return EzySimpleMongoClientLoader.load(properties);
 	}
 	
