@@ -3,13 +3,12 @@ package com.tvd12.ezyfox.boot.test.mongodb;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.tvd12.ezydata.database.EzyDatabaseContext;
-import com.tvd12.ezydata.mongodb.loader.EzySimpleMongoClientLoader;
 import com.tvd12.ezyfox.boot.mongodb.MongoConfiguration;
-import org.bson.BsonDocument;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class MongoConfigForTest extends MongoConfiguration {
 	
 	@Override
