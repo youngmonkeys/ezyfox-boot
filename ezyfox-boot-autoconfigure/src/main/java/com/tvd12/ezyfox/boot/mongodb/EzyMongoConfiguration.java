@@ -19,7 +19,7 @@ import java.util.Set;
 
 @Setter
 @EzyConfigurationBefore
-public class MongoConfiguration implements
+public class EzyMongoConfiguration implements
 		EzyBeanAutoConfig,
 		EzyPropertiesAware,
 		EzySingletonFactoryAware,
