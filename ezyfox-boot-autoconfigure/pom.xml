@@ -10,7 +10,7 @@
 	<artifactId>ezyfox-boot-autoconfigure</artifactId>
 	
 	<properties>
-		<ezy.data.version>1.1.8</ezy.data.version>
+		<ezy.data.version>1.1.9</ezy.data.version>
 	</properties>
 	
 	<dependencies>
