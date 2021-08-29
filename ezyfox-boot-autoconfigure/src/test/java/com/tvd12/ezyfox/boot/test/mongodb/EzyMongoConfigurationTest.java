@@ -19,7 +19,7 @@ public class EzyMongoConfigurationTest {
 		EzySingletonFactory singletonFactory = mock(EzySingletonFactory.class);
 		
 		Set<String> packagesToScan = RandomUtil.randomSet(8, String.class);
-		packagesToScan.add("com.tvd12.ezyfox");
+		packagesToScan.add("com.tvd12.ezyfox.boot.test.mongodb");
 		Properties properties = new Properties();
 		
 		EzyMongoConfiguration sut = new EzyMongoConfigForTest();
