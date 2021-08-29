@@ -9,6 +9,6 @@ Just need add dependency to your pom:
 <dependency>
 	<groupId>com.tvd12</groupId>
 	<artifactId>ezyfox-boot</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 </dependency>
 ```
