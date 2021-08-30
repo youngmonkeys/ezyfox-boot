@@ -9,7 +9,7 @@ boot project for ezyfox
 ```xml
 <dependency>
 	<groupId>com.tvd12</groupId>
-	<artifactId>ezyfox-boot</artifactId>
+	<artifactId>ezyfox-boot-autoconfigure</artifactId>
 	<version>1.0.1</version>
 </dependency>
 ```
