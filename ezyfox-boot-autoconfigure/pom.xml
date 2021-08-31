@@ -5,14 +5,19 @@
 	<parent>
 		<groupId>com.tvd12</groupId>
 		<artifactId>ezyfox-boot</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 	</parent>
 	<artifactId>ezyfox-boot-autoconfigure</artifactId>
-	
+
 	<properties>
-		<ezy.data.version>1.1.9</ezy.data.version>
+		<ezy.data.version>1.2.0</ezy.data.version>
+		<h2.version>1.4.200</h2.version>
+		<hibernate.version>5.5.7.Final</hibernate.version>
+		<hikaricp.version>4.0.3</hikaricp.version>
+		<javax.transaction.version>1.3</javax.transaction.version>
+		<javax.persistence.version>2.2</javax.persistence.version>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>com.tvd12</groupId>
@@ -20,6 +25,53 @@
 			<version>${ezy.data.version}</version>
 			<optional>true</optional>
 		</dependency>
+		
+		<!-- start jpa -->
+		<dependency>
+			<groupId>com.tvd12</groupId>
+			<artifactId>ezydata-jpa</artifactId>
+			<version>${ezy.data.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>javax.persistence-api</artifactId>
+			<version>${javax.persistence.version}</version>
+			<scope>provided</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>javax.transaction-api</artifactId>
+			<version>${javax.transaction.version}</version>
+			<scope>provided</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<version>${hikaricp.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+			<scope>test</scope>
+		</dependency>
+		<!-- end jpa -->
 	</dependencies>
-	
+
 </project>

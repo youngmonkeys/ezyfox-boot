@@ -5,6 +5,7 @@
 		<packages>
 			<package name="com.tvd12.ezyfox.boot.test"></package>
 			<package name="com.tvd12.ezyfox.boot.test.mongodb"></package>
+			<package name="com.tvd12.ezyfox.boot.test.jpa"></package>
 		</packages>
 	</test>
 </suite>
