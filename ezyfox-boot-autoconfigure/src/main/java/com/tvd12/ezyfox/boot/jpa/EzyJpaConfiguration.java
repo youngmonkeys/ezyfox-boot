@@ -1,4 +1,4 @@
-package com.tvd12.ezyfox.boot.mongodb;
+package com.tvd12.ezyfox.boot.jpa;
 
 import java.util.Properties;
 import java.util.Set;

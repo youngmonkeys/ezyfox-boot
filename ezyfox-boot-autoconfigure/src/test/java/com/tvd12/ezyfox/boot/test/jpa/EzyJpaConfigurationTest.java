@@ -12,7 +12,7 @@ import java.util.Set;
 import org.testng.annotations.Test;
 
 import com.tvd12.ezyfox.bean.EzySingletonFactory;
-import com.tvd12.ezyfox.boot.mongodb.EzyJpaConfiguration;
+import com.tvd12.ezyfox.boot.jpa.EzyJpaConfiguration;
 import com.tvd12.properties.file.reader.BaseFileReader;
 import com.tvd12.test.util.RandomUtil;
 
