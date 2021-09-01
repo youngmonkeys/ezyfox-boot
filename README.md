@@ -14,7 +14,9 @@ boot project for ezyfox
 </dependency>
 ```
 
-2. Create and edit config file `src/main/resources/[FILE_NAME].properties`:
+2. Create and edit configuration file:
+
+You can create `src/main/resources/[FILE_NAME].properties` file:
 
 ```properties
 # for mongodb
@@ -31,7 +33,28 @@ datasource.password=[your db password]
 
 ```
 
-**NOTE:** You can add above fields directly to `application.properties` file and skip Step 3. By default, `ezyfox-boot` automatically loads `application.properties`, so we don't need to specify the `@EzyPropertiesSources`
+Or `src/main/resources/[FILE_NAME].yaml` file like this:
+
+```yaml
+# for mongodb
+database:
+	mongo:
+		uri: mongodb://root:123456@127.0.0.1:27017/[DATABASE_NAME]
+		database: [DATABASE_NAME]
+		collection:
+			naming.case: UNDERSCORE
+			naming.ignored_suffix: Entity
+
+# for jpa
+datasource:
+	jdbcUrl: [your jdbc url, i.e jdbc:h2:mem:testdb]
+	driverClassName: [your driver class name, i.e org.h2.Driver]
+	username: [your db username]
+	password: [your db password]
+
+```
+
+**NOTE:** You can add above fields directly to `application.properties` or `application.yaml` file and skip Step 3. By default, `ezyfox-boot` automatically loads `application.properties` and `application.yaml`, so we don't need to specify the `@EzyPropertiesSources`
 
 3. Add `@EzyPropertiesSources({"[FILE_NAME].properties"})` before the main class:
 
