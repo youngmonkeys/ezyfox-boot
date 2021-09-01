@@ -38,20 +38,19 @@ Or `src/main/resources/[FILE_NAME].yaml` file like this:
 ```yaml
 # for mongodb
 database:
-	mongo:
-		uri: mongodb://root:123456@127.0.0.1:27017/[DATABASE_NAME]
-		database: [DATABASE_NAME]
-		collection:
-			naming.case: UNDERSCORE
-			naming.ignored_suffix: Entity
+    mongo:
+    uri: mongodb://root:123456@127.0.0.1:27017/[DATABASE_NAME]
+    database: [DATABASE_NAME]
+    collection:
+         naming.case: UNDERSCORE
+         naming.ignored_suffix: Entity
 
 # for jpa
 datasource:
-	jdbcUrl: [your jdbc url, i.e jdbc:h2:mem:testdb]
-	driverClassName: [your driver class name, i.e org.h2.Driver]
-	username: [your db username]
-	password: [your db password]
-
+    jdbcUrl: [your jdbc url, i.e jdbc:h2:mem:testdb]
+    driverClassName: [your driver class name, i.e org.h2.Driver]
+    username: [your db username]
+    password: [your db password]
 ```
 
 **NOTE:** You can add above fields directly to `application.properties` or `application.yaml` file and skip Step 3. By default, `ezyfox-boot` automatically loads `application.properties` and `application.yaml`, so we don't need to specify the `@EzyPropertiesSources`
