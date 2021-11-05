@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>com.tvd12</groupId>
 		<artifactId>ezyfox-boot</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.2</version>
 	</parent>
 	<artifactId>ezyfox-boot-autoconfigure</artifactId>
 
 	<properties>
-		<ezy.data.version>1.2.0</ezy.data.version>
+		<ezy.data.version>1.2.1</ezy.data.version>
 		<h2.version>1.4.200</h2.version>
 		<hibernate.version>5.5.7.Final</hibernate.version>
 		<hikaricp.version>4.0.3</hikaricp.version>
