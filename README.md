@@ -1,4 +1,4 @@
-# ezyfox-boot <img src="https://github.com/youngmonkeys/ezyfox/blob/master/logo.png" width="64" />
+# ezyfox-boot <img src="https://github.com/youngmonkeys/ezyfox-boot/blob/master/logo.png" width="64" />
 
 boot project for ezyfox
 
