@@ -4,8 +4,9 @@
 	<test name="All">
 		<packages>
 			<package name="com.tvd12.ezyfox.boot.test"></package>
-			<package name="com.tvd12.ezyfox.boot.test.mongodb"></package>
 			<package name="com.tvd12.ezyfox.boot.test.jpa"></package>
+			<package name="com.tvd12.ezyfox.boot.test.mongodb"></package>
+			<package name="com.tvd12.ezyfox.boot.test.redis"></package>
 		</packages>
 	</test>
 </suite>

@@ -72,6 +72,15 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- end jpa -->
+		
+		<!-- start redis -->
+		<dependency>
+			<groupId>com.tvd12</groupId>
+			<artifactId>ezydata-redis</artifactId>
+			<version>${ezy.data.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<!-- end redis -->
 	</dependencies>
 
 </project>
