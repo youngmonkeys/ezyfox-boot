@@ -10,7 +10,7 @@ boot project for ezyfox
 <dependency>
 	<groupId>com.tvd12</groupId>
 	<artifactId>ezyfox-boot-autoconfigure</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 </dependency>
 ```
 
@@ -31,6 +31,8 @@ datasource.driverClassName=[your driver class name, i.e org.h2.Driver]
 datasource.username=[your db username]
 datasource.password=[your db password]
 
+# for redis
+redis.uri=[your uri]
 ```
 
 Or `src/main/resources/[FILE_NAME].yaml` file like this:
@@ -51,6 +53,10 @@ datasource:
     driverClassName: [your driver class name, i.e org.h2.Driver]
     username: [your db username]
     password: [your db password]
+    
+# for redis
+redis:
+  uri: [your uri]
 ```
 
 **NOTE:** You can add above fields directly to `application.properties` or `application.yaml` file and skip Step 3. By default, `ezyfox-boot` automatically loads `application.properties` and `application.yaml`, so we don't need to specify the `@EzyPropertiesSources`
