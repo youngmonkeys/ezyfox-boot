@@ -7,10 +7,13 @@
 		<artifactId>ezyfox-boot</artifactId>
 		<version>1.0.2</version>
 	</parent>
+	<version>1.0.3</version>
 	<artifactId>ezyfox-boot-autoconfigure</artifactId>
+	<name>ezyfox-boot-autoconfigure</name>
+	<url>https://youngmonkeys.org/project/ezyfox-boot/</url>
 
 	<properties>
-		<ezy.data.version>1.2.1</ezy.data.version>
+		<ezy.version>1.2.2</ezy.version>
 		<h2.version>1.4.200</h2.version>
 		<hibernate.version>5.5.7.Final</hibernate.version>
 		<hikaricp.version>4.0.3</hikaricp.version>
@@ -22,7 +25,7 @@
 		<dependency>
 			<groupId>com.tvd12</groupId>
 			<artifactId>ezydata-mongodb</artifactId>
-			<version>${ezy.data.version}</version>
+			<version>${ezy.version}</version>
 			<optional>true</optional>
 		</dependency>
 		
@@ -30,7 +33,7 @@
 		<dependency>
 			<groupId>com.tvd12</groupId>
 			<artifactId>ezydata-jpa</artifactId>
-			<version>${ezy.data.version}</version>
+			<version>${ezy.version}</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
@@ -77,7 +80,7 @@
 		<dependency>
 			<groupId>com.tvd12</groupId>
 			<artifactId>ezydata-redis</artifactId>
-			<version>${ezy.data.version}</version>
+			<version>${ezy.version}</version>
 			<optional>true</optional>
 		</dependency>
 		<!-- end redis -->
