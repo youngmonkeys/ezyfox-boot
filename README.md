@@ -10,7 +10,7 @@ boot project for ezyfox
 <dependency>
 	<groupId>com.tvd12</groupId>
 	<artifactId>ezyfox-boot-autoconfigure</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 </dependency>
 ```
 

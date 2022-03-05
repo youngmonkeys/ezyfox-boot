@@ -5,9 +5,8 @@
 	<parent>
 		<groupId>com.tvd12</groupId>
 		<artifactId>ezyfox-boot</artifactId>
-		<version>1.0.2</version>
+		<version>1.0.3</version>
 	</parent>
-	<version>1.0.3</version>
 	<artifactId>ezyfox-boot-autoconfigure</artifactId>
 	<name>ezyfox-boot-autoconfigure</name>
 	<url>https://youngmonkeys.org/project/ezyfox-boot/</url>
