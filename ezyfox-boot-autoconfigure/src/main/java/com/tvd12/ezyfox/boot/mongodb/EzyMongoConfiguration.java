@@ -1,5 +1,10 @@
 package com.tvd12.ezyfox.boot.mongodb;
 
+import static com.tvd12.ezyfox.boot.util.EzyDatabaseContexts.addRepositoriesFromDatabaseContextToSingletonFactory;
+
+import java.util.Properties;
+import java.util.Set;
+
 import com.mongodb.MongoClient;
 import com.tvd12.ezydata.database.EzyDatabaseContext;
 import com.tvd12.ezydata.mongodb.EzyMongoDatabaseContextBuilder;
@@ -11,11 +16,8 @@ import com.tvd12.ezyfox.bean.EzySingletonFactory;
 import com.tvd12.ezyfox.bean.EzySingletonFactoryAware;
 import com.tvd12.ezyfox.bean.annotation.EzyConfigurationBefore;
 import com.tvd12.ezyfox.util.EzyPropertiesAware;
-import lombok.Setter;
 
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
+import lombok.Setter;
 
 @Setter
 @EzyConfigurationBefore
@@ -37,11 +39,10 @@ public class EzyMongoConfiguration implements
 	
 	@Override
 	public void autoConfig() {
-		EzyDatabaseContext databaseContext = newMongodbDatabaseContext();
-		Map<String, Object> repos = databaseContext.getRepositoriesByName();
-		for (String repoName : repos.keySet()) {
-			singletonFactory.addSingleton(repoName, repos.get(repoName));
-		}
+		addRepositoriesFromDatabaseContextToSingletonFactory(
+		    newMongodbDatabaseContext(),
+		    singletonFactory
+	    );
 	}
 	
 	private EzyDatabaseContext newMongodbDatabaseContext() {
