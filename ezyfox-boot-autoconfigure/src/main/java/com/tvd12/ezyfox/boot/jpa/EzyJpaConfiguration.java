@@ -1,5 +1,7 @@
 package com.tvd12.ezyfox.boot.jpa;
 
+import static com.tvd12.ezyfox.boot.util.EzyDatabaseContexts.addRepositoriesFromDatabaseContextToSingletonFactory;
+
 import java.util.Properties;
 import java.util.Set;
 
@@ -20,7 +22,6 @@ import com.tvd12.ezyfox.util.EzyPropertiesAware;
 
 import lombok.Setter;
 
-
 @Setter
 @EzyConfigurationBefore
 public class EzyJpaConfiguration implements 
@@ -38,9 +39,9 @@ public class EzyJpaConfiguration implements
 
     @Override
     public void autoConfig() {
-        EzyDatabaseContext databaseContext = databaseContext();
-        databaseContext.getRepositoriesByName().forEach((name, repo) ->
-            singletonFactory.addSingleton(name, repo)
+        addRepositoriesFromDatabaseContextToSingletonFactory(
+            databaseContext(),
+            singletonFactory
         );
     }
 
