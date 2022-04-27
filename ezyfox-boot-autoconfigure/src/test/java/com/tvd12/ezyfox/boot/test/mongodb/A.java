@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @EzyCollection
 public class A {
-	
-	@EzyId
-	int id;
+
+    @EzyId
+    int id;
 }

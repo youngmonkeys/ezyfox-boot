@@ -10,19 +10,19 @@ import static org.mockito.Mockito.when;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class EzyMongoConfigForTest extends EzyMongoConfiguration {
-	
-	@Override
-	protected MongoClient newMongoClient() {
-		MongoClient mongoClient = mock(MongoClient.class);
-		MongoDatabase mongoDatabase = mock(MongoDatabase.class);
-		when(mongoClient.getDatabase("mock_db")).thenReturn(
-				mongoDatabase
-		);
-		
-		MongoCollection mongoCollection = mock(MongoCollection.class);
-		when(mongoDatabase.getCollection("A")).thenReturn(
-				mongoCollection
-		);
-		return mongoClient;
-	}
+
+    @Override
+    protected MongoClient newMongoClient() {
+        MongoClient mongoClient = mock(MongoClient.class);
+        MongoDatabase mongoDatabase = mock(MongoDatabase.class);
+        when(mongoClient.getDatabase("mock_db")).thenReturn(
+            mongoDatabase
+        );
+
+        MongoCollection mongoCollection = mock(MongoCollection.class);
+        when(mongoDatabase.getCollection("A")).thenReturn(
+            mongoCollection
+        );
+        return mongoClient;
+    }
 }

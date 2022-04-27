@@ -1,88 +1,88 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.tvd12</groupId>
-		<artifactId>ezyfox-boot</artifactId>
-		<version>1.0.4</version>
-	</parent>
-	<artifactId>ezyfox-boot-autoconfigure</artifactId>
-	<name>ezyfox-boot-autoconfigure</name>
-	<url>https://youngmonkeys.org/project/ezyfox-boot/</url>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.tvd12</groupId>
+        <artifactId>ezyfox-boot</artifactId>
+        <version>1.0.4</version>
+    </parent>
+    <artifactId>ezyfox-boot-autoconfigure</artifactId>
+    <name>ezyfox-boot-autoconfigure</name>
+    <url>https://youngmonkeys.org/project/ezyfox-boot/</url>
 
-	<properties>
-		<ezy.version>1.2.2</ezy.version>
-		<h2.version>1.4.200</h2.version>
-		<hibernate.version>5.5.7.Final</hibernate.version>
-		<hikaricp.version>4.0.3</hikaricp.version>
-		<javax.transaction.version>1.3</javax.transaction.version>
-		<javax.persistence.version>2.2</javax.persistence.version>
-	</properties>
+    <properties>
+        <ezy.version>1.2.2</ezy.version>
+        <h2.version>1.4.200</h2.version>
+        <hibernate.version>5.5.7.Final</hibernate.version>
+        <hikaricp.version>4.0.3</hikaricp.version>
+        <javax.transaction.version>1.3</javax.transaction.version>
+        <javax.persistence.version>2.2</javax.persistence.version>
+    </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.tvd12</groupId>
-			<artifactId>ezydata-mongodb</artifactId>
-			<version>${ezy.version}</version>
-			<optional>true</optional>
-		</dependency>
-		
-		<!-- start jpa -->
-		<dependency>
-			<groupId>com.tvd12</groupId>
-			<artifactId>ezydata-jpa</artifactId>
-			<version>${ezy.version}</version>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>javax.persistence-api</artifactId>
-			<version>${javax.persistence.version}</version>
-			<scope>provided</scope>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>javax.transaction</groupId>
-			<artifactId>javax.transaction-api</artifactId>
-			<version>${javax.transaction.version}</version>
-			<scope>provided</scope>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>${h2.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.zaxxer</groupId>
-			<artifactId>HikariCP</artifactId>
-			<version>${hikaricp.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-api</artifactId>
-				</exclusion>
-			</exclusions>
-			<scope>test</scope>
-		</dependency>
-		<!-- end jpa -->
-		
-		<!-- start redis -->
-		<dependency>
-			<groupId>com.tvd12</groupId>
-			<artifactId>ezydata-redis</artifactId>
-			<version>${ezy.version}</version>
-			<optional>true</optional>
-		</dependency>
-		<!-- end redis -->
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>com.tvd12</groupId>
+            <artifactId>ezydata-mongodb</artifactId>
+            <version>${ezy.version}</version>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- start jpa -->
+        <dependency>
+            <groupId>com.tvd12</groupId>
+            <artifactId>ezydata-jpa</artifactId>
+            <version>${ezy.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>${javax.persistence.version}</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>javax.transaction-api</artifactId>
+            <version>${javax.transaction.version}</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${hikaricp.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+            <scope>test</scope>
+        </dependency>
+        <!-- end jpa -->
+
+        <!-- start redis -->
+        <dependency>
+            <groupId>com.tvd12</groupId>
+            <artifactId>ezydata-redis</artifactId>
+            <version>${ezy.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <!-- end redis -->
+    </dependencies>
 
 </project>
