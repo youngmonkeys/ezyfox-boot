@@ -1,13 +1,5 @@
 package com.tvd12.ezyfox.boot.jpa;
 
-import static com.tvd12.ezyfox.boot.util.EzyDatabaseContexts.addRepositoriesFromDatabaseContextToSingletonFactory;
-
-import java.util.Properties;
-import java.util.Set;
-
-import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
-
 import com.tvd12.ezydata.database.EzyDatabaseContext;
 import com.tvd12.ezydata.jpa.EzyJpaDatabaseContextBuilder;
 import com.tvd12.ezydata.jpa.loader.EzyJpaDataSourceLoader;
@@ -19,19 +11,25 @@ import com.tvd12.ezyfox.bean.EzySingletonFactoryAware;
 import com.tvd12.ezyfox.bean.annotation.EzyAutoBind;
 import com.tvd12.ezyfox.bean.annotation.EzyConfigurationBefore;
 import com.tvd12.ezyfox.util.EzyPropertiesAware;
-
 import lombok.Setter;
+
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
+import java.util.Properties;
+import java.util.Set;
+
+import static com.tvd12.ezyfox.boot.util.EzyDatabaseContexts.addRepositoriesFromDatabaseContextToSingletonFactory;
 
 @Setter
 @EzyConfigurationBefore
-public class EzyJpaConfiguration implements 
-		EzyBeanAutoConfig,
-		EzyPropertiesAware,
-		EzySingletonFactoryAware,
-		EzyPackagesToScanAware {
+public class EzyJpaConfiguration implements
+    EzyBeanAutoConfig,
+    EzyPropertiesAware,
+    EzySingletonFactoryAware,
+    EzyPackagesToScanAware {
 
     private Properties properties;
-    
+
     private Set<String> packagesToScan;
 
     @EzyAutoBind

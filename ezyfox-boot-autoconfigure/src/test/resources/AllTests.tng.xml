@@ -1,12 +1,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="AllTests">
-	<test name="All">
-		<packages>
-			<package name="com.tvd12.ezyfox.boot.test"></package>
-			<package name="com.tvd12.ezyfox.boot.test.jpa"></package>
-			<package name="com.tvd12.ezyfox.boot.test.mongodb"></package>
-			<package name="com.tvd12.ezyfox.boot.test.redis"></package>
-		</packages>
-	</test>
+    <test name="All">
+        <packages>
+            <package name="com.tvd12.ezyfox.boot.test"></package>
+            <package name="com.tvd12.ezyfox.boot.test.jpa"></package>
+            <package name="com.tvd12.ezyfox.boot.test.mongodb"></package>
+            <package name="com.tvd12.ezyfox.boot.test.redis"></package>
+        </packages>
+    </test>
 </suite>

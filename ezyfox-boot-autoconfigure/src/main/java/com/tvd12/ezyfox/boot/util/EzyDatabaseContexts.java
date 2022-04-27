@@ -1,14 +1,15 @@
 package com.tvd12.ezyfox.boot.util;
 
-import static com.tvd12.ezyfox.bean.impl.EzyBeanNameParser.getBeanName;
-
 import com.tvd12.ezydata.database.EzyDatabaseContext;
 import com.tvd12.ezyfox.bean.EzySingletonFactory;
 
+import static com.tvd12.ezyfox.bean.impl.EzyBeanNameParser.getBeanName;
+
 public class EzyDatabaseContexts {
 
-    private EzyDatabaseContexts() {}
-    
+    private EzyDatabaseContexts() {
+    }
+
     public static void addRepositoriesFromDatabaseContextToSingletonFactory(
         EzyDatabaseContext databaseContext,
         EzySingletonFactory singletonFactory
@@ -19,5 +20,5 @@ public class EzyDatabaseContexts {
                 singletonFactory.addSingleton(getBeanName(repoType), repo)
             );
     }
-    
+
 }

@@ -1,56 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.tvd12</groupId>
-		<artifactId>ezyfox</artifactId>
-		<version>1.0.3</version>
-	</parent>
-	<version>1.0.4</version>
-	<artifactId>ezyfox-boot</artifactId>
-	<packaging>pom</packaging>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.tvd12</groupId>
+        <artifactId>ezyfox</artifactId>
+        <version>1.0.3</version>
+    </parent>
+    <version>1.0.4</version>
+    <artifactId>ezyfox-boot</artifactId>
+    <packaging>pom</packaging>
 
-	<name>ezyfox-boot</name>
-	<url>https://youngmonkeys.org/project/ezyfox-sever/</url>
-	<description>
-		Auto Configuration for which project use ezyfox
-	</description>
+    <name>ezyfox-boot</name>
+    <url>https://youngmonkeys.org/project/ezyfox-sever/</url>
+    <description>
+        Auto Configuration for which project use ezyfox
+    </description>
 
-	<organization>
-		<name>Young Monkeys</name>
-		<url>https://youngmonkeys.org/</url>
-	</organization>
+    <organization>
+        <name>Young Monkeys</name>
+        <url>https://youngmonkeys.org/</url>
+    </organization>
 
-	<licenses>
-		<license>
-			<name>Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
-	<scm>
-		<connection>scm:git:git@github.com:youngmonkeys/ezyfox-boot.git</connection>
-		<developerConnection>scm:git:git@github.com:youngmonkeys/ezyfox-boot.git</developerConnection>
-		<url>https://github.com/youngmonkeys/ezyfox-boot</url>
-	</scm>
+    <scm>
+        <connection>scm:git:git@github.com:youngmonkeys/ezyfox-boot.git</connection>
+        <developerConnection>scm:git:git@github.com:youngmonkeys/ezyfox-boot.git</developerConnection>
+        <url>https://github.com/youngmonkeys/ezyfox-boot</url>
+    </scm>
 
-	<issueManagement>
-		<system>Github</system>
-		<url>https://github.com/youngmonkeys/ezyfox-boot/issues</url>
-	</issueManagement>
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/youngmonkeys/ezyfox-boot/issues</url>
+    </issueManagement>
 
-	<developers>
-		<developer>
-			<name>Ta Van Dung</name>
-			<email>itprono3@gmail.com</email>
-			<organization>Young Monkeys</organization>
-			<organizationUrl>https://youngmonkeys.org/</organizationUrl>
-		</developer>
-	</developers>
-	<modules>
-		<module>ezyfox-boot-autoconfigure</module>
-	</modules>
+    <developers>
+        <developer>
+            <name>Ta Van Dung</name>
+            <email>itprono3@gmail.com</email>
+            <organization>Young Monkeys</organization>
+            <organizationUrl>https://youngmonkeys.org/</organizationUrl>
+        </developer>
+    </developers>
+    <modules>
+        <module>ezyfox-boot-autoconfigure</module>
+    </modules>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.1.2</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>8.42</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <consoleOutput>true</consoleOutput>
+                    <violationSeverity>warning</violationSeverity>
+                    <configLocation>checkstyle.xml</configLocation>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>verify</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
 
