@@ -34,7 +34,9 @@ public class EzyJpaConfigurationTest {
         sut.config();
 
         // then
-        verify(singletonFactory, times(1)).addSingleton(eq("userRepo"), any(UserRepo.class));
+        verify(
+            singletonFactory,
+            times(1)
+        ).addSingleton(eq("userRepo"), any(UserRepo.class));
     }
-
 }

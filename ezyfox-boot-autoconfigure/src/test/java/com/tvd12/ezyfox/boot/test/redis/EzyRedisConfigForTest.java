@@ -8,7 +8,6 @@ import static org.mockito.Mockito.mock;
 public class EzyRedisConfigForTest extends EzyRedisConfiguration {
 
     protected EzyRedisClientPool newClientPool() {
-        EzyRedisClientPool clientPool = mock(EzyRedisClientPool.class);
-        return clientPool;
+        return mock(EzyRedisClientPool.class);
     }
 }

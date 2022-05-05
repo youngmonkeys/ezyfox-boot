@@ -5,9 +5,9 @@
     <parent>
         <groupId>com.tvd12</groupId>
         <artifactId>ezyfox</artifactId>
-        <version>1.0.3</version>
+        <version>1.0.4</version>
     </parent>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <artifactId>ezyfox-boot</artifactId>
     <packaging>pom</packaging>
 

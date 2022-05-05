@@ -64,5 +64,4 @@ public class EzyJpaConfiguration implements
             .properties(properties, "datasource")
             .load();
     }
-
 }

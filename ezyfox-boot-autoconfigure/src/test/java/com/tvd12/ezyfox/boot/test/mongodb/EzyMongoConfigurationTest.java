@@ -32,8 +32,13 @@ public class EzyMongoConfigurationTest {
         sut.autoConfig();
 
         // then
-        verify(singletonFactory, times(1)).addSingleton(eq("ezyMaxIdRepository"), any(EzyMongoMaxIdRepository.class));
-        verify(singletonFactory, times(1)).addSingleton(eq("aRepo"), any(ARepo.class));
+        verify(
+            singletonFactory,
+            times(1)
+        ).addSingleton(eq("ezyMaxIdRepository"), any(EzyMongoMaxIdRepository.class));
+        verify(
+            singletonFactory,
+            times(1)
+        ).addSingleton(eq("aRepo"), any(ARepo.class));
     }
-
 }

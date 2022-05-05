@@ -33,6 +33,9 @@ public class EzyRedisConfigTest {
         sut.autoConfig();
 
         // then
-        verify(singletonFactory, times(1)).addSingleton(eq("redisProxy"), any(EzyRedisProxy.class));
+        verify(
+            singletonFactory,
+            times(1)
+        ).addSingleton(eq("redisProxy"), any(EzyRedisProxy.class));
     }
 }

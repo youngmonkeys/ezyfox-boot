@@ -5,10 +5,9 @@ import com.tvd12.ezyfox.bean.EzySingletonFactory;
 
 import static com.tvd12.ezyfox.bean.impl.EzyBeanNameParser.getBeanName;
 
-public class EzyDatabaseContexts {
+public final class EzyDatabaseContexts {
 
-    private EzyDatabaseContexts() {
-    }
+    private EzyDatabaseContexts() {}
 
     public static void addRepositoriesFromDatabaseContextToSingletonFactory(
         EzyDatabaseContext databaseContext,
@@ -20,5 +19,4 @@ public class EzyDatabaseContexts {
                 singletonFactory.addSingleton(getBeanName(repoType), repo)
             );
     }
-
 }

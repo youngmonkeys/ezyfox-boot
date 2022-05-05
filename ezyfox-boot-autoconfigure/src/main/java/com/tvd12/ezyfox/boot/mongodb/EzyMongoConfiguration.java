@@ -59,6 +59,5 @@ public class EzyMongoConfiguration implements
     protected MongoClient newMongoClient() {
         return EzySimpleMongoClientLoader.load(properties);
     }
-
 }
 
