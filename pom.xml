@@ -5,9 +5,9 @@
     <parent>
         <groupId>com.tvd12</groupId>
         <artifactId>ezyfox</artifactId>
-        <version>1.0.7</version>
+        <version>1.0.8</version>
     </parent>
-    <version>1.1.2</version>
+    <version>1.1.4</version>
     <artifactId>ezyfox-boot</artifactId>
     <packaging>pom</packaging>
 
@@ -57,7 +57,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.1.2</version>
+                <version>${maven.checkstyle.plugin.version}</version>
                 <dependencies>
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>

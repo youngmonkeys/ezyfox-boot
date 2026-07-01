@@ -1,6 +1,6 @@
 package com.tvd12.ezyfox.boot.mongodb;
 
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
 import com.tvd12.ezydata.database.EzyDatabaseContext;
 import com.tvd12.ezydata.mongodb.EzyMongoDatabaseContextBuilder;
 import com.tvd12.ezydata.mongodb.loader.EzySimpleMongoClientLoader;
