@@ -1,11 +1,15 @@
 package com.tvd12.ezyfox.boot.test.jpa;
 
+import com.tvd12.ezydata.database.EzyDatabaseContext;
 import com.tvd12.ezyfox.bean.EzySingletonFactory;
+import com.tvd12.ezyfox.bean.impl.EzyBeanKey;
 import com.tvd12.ezyfox.boot.jpa.EzyJpaConfiguration;
 import com.tvd12.properties.file.reader.BaseFileReader;
 import com.tvd12.test.util.RandomUtil;
 import org.testng.annotations.Test;
 
+import javax.persistence.EntityManagerFactory;
+import java.util.Collections;
 import java.util.Properties;
 import java.util.Set;
 
@@ -14,6 +18,60 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.*;
 
 public class EzyJpaConfigurationTest {
+
+    @Test
+    public void autoConfigWithSharedDatabaseContext() {
+        // given
+        EzySingletonFactory singletonFactory = mock(EzySingletonFactory.class);
+        EzyDatabaseContext databaseContext = mock(EzyDatabaseContext.class);
+        when(databaseContext.getRepositories()).thenReturn(Collections.emptyMap());
+        when(singletonFactory.getSingleton(EzyBeanKey.of(
+            "sharedDatabaseContext",
+            EzyDatabaseContext.class
+        ))).thenReturn(databaseContext);
+
+        EzyJpaConfiguration sut = new EzyJpaConfiguration();
+        sut.setSingletonFactory(singletonFactory);
+
+        // when
+        sut.config();
+
+        // then
+        verify(databaseContext).getRepositories();
+        verify(singletonFactory, never()).getSingleton(EzyBeanKey.of(
+            "sharedEntityManagerFactory",
+            EntityManagerFactory.class
+        ));
+    }
+
+    @Test
+    public void autoConfigWithSharedEntityManagerFactory() {
+        // given
+        EzySingletonFactory singletonFactory = mock(EzySingletonFactory.class);
+        EntityManagerFactory entityManagerFactory = mock(EntityManagerFactory.class);
+        when(singletonFactory.getSingleton(EzyBeanKey.of(
+            "sharedEntityManagerFactory",
+            EntityManagerFactory.class
+        ))).thenReturn(entityManagerFactory);
+
+        EzyJpaConfiguration sut = new EzyJpaConfiguration();
+        sut.setPackagesToScan(Collections.emptySet());
+        sut.setProperties(new Properties());
+        sut.setSingletonFactory(singletonFactory);
+
+        // when
+        sut.config();
+
+        // then
+        verify(singletonFactory).getSingleton(EzyBeanKey.of(
+            "sharedEntityManagerFactory",
+            EntityManagerFactory.class
+        ));
+        verify(singletonFactory, never()).getSingleton(EzyBeanKey.of(
+            "sharedDataSource",
+            javax.sql.DataSource.class
+        ));
+    }
 
     @Test
     public void autoConfigSuccess() {

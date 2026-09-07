@@ -9,6 +9,7 @@ import com.tvd12.ezyfox.bean.EzyPackagesToScanAware;
 import com.tvd12.ezyfox.bean.EzySingletonFactory;
 import com.tvd12.ezyfox.bean.EzySingletonFactoryAware;
 import com.tvd12.ezyfox.bean.annotation.EzyConfigurationBefore;
+import com.tvd12.ezyfox.bean.impl.EzyBeanKey;
 import com.tvd12.ezyfox.util.EzyPropertiesAware;
 import lombok.Setter;
 
@@ -33,6 +34,16 @@ public class EzyRedisConfiguration implements
     }
 
     private EzyRedisProxy newRedisProxy() {
+        EzyRedisProxy redisProxy = (EzyRedisProxy) singletonFactory
+            .getSingleton(
+                EzyBeanKey.of(
+                    "sharedRedisProxy",
+                    EzyRedisProxy.class
+                )
+            );
+        if (redisProxy != null) {
+            return redisProxy;
+        }
         return EzyRedisProxyFactory.builder()
             .properties(properties)
             .scan(packagesToScan)
@@ -42,6 +53,16 @@ public class EzyRedisConfiguration implements
     }
 
     protected EzyRedisClientPool newClientPool() {
+        EzyRedisClientPool clientPool = (EzyRedisClientPool) singletonFactory
+            .getSingleton(
+                EzyBeanKey.of(
+                    "sharedRedisClientPool",
+                    EzyRedisClientPool.class
+                )
+            );
+        if (clientPool != null) {
+            return clientPool;
+        }
         return new EzyJedisClientPoolLoader()
             .properties(properties)
             .load();

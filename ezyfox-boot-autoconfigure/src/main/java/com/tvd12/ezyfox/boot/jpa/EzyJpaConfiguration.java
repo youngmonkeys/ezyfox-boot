@@ -45,6 +45,16 @@ public class EzyJpaConfiguration implements
     }
 
     private EzyDatabaseContext databaseContext() {
+        EzyDatabaseContext databaseContext = (EzyDatabaseContext) singletonFactory
+            .getSingleton(
+                EzyBeanKey.of(
+                    "sharedDatabaseContext",
+                    EzyDatabaseContext.class
+                )
+            );
+        if (databaseContext != null) {
+            return databaseContext;
+        }
         return new EzyJpaDatabaseContextBuilder()
             .properties(properties)
             .entityManagerFactory(entityManagerFactory())
@@ -53,6 +63,16 @@ public class EzyJpaConfiguration implements
     }
 
     private EntityManagerFactory entityManagerFactory() {
+        EntityManagerFactory entityManagerFactory =
+            (EntityManagerFactory) singletonFactory.getSingleton(
+                EzyBeanKey.of(
+                    "sharedEntityManagerFactory",
+                    EntityManagerFactory.class
+                )
+            );
+        if (entityManagerFactory != null) {
+            return entityManagerFactory;
+        }
         return new EzyJpaEntityManagerFactoryLoader()
             .entityPackages(packagesToScan)
             .dataSource(dataSource())

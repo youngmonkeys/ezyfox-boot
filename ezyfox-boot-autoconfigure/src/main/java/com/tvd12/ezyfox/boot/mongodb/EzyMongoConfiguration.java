@@ -10,6 +10,7 @@ import com.tvd12.ezyfox.bean.EzyPackagesToScanAware;
 import com.tvd12.ezyfox.bean.EzySingletonFactory;
 import com.tvd12.ezyfox.bean.EzySingletonFactoryAware;
 import com.tvd12.ezyfox.bean.annotation.EzyConfigurationBefore;
+import com.tvd12.ezyfox.bean.impl.EzyBeanKey;
 import com.tvd12.ezyfox.util.EzyPropertiesAware;
 import lombok.Setter;
 
@@ -45,6 +46,16 @@ public class EzyMongoConfiguration implements
     }
 
     private EzyDatabaseContext newMongodbDatabaseContext() {
+        EzyDatabaseContext databaseContext = (EzyDatabaseContext) singletonFactory
+            .getSingleton(
+                EzyBeanKey.of(
+                    "sharedDatabaseContext",
+                    EzyDatabaseContext.class
+                )
+            );
+        if (databaseContext != null) {
+            return databaseContext;
+        }
         EzyMongoDatabaseContextBuilder builder = new EzyMongoDatabaseContextBuilder()
             .properties(properties)
             .mongoClient(newMongoClient())
@@ -57,7 +68,16 @@ public class EzyMongoConfiguration implements
     }
 
     protected MongoClient newMongoClient() {
+        MongoClient mongoClient = (MongoClient) singletonFactory
+            .getSingleton(
+                EzyBeanKey.of(
+                    "sharedMongoClient",
+                    MongoClient.class
+                )
+            );
+        if (mongoClient != null) {
+            return mongoClient;
+        }
         return EzySimpleMongoClientLoader.load(properties);
     }
 }
-
