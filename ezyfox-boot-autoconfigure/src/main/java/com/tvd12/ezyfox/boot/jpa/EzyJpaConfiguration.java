@@ -10,6 +10,7 @@ import com.tvd12.ezyfox.bean.EzySingletonFactory;
 import com.tvd12.ezyfox.bean.EzySingletonFactoryAware;
 import com.tvd12.ezyfox.bean.annotation.EzyAutoBind;
 import com.tvd12.ezyfox.bean.annotation.EzyConfigurationBefore;
+import com.tvd12.ezyfox.bean.impl.EzyBeanKey;
 import com.tvd12.ezyfox.util.EzyPropertiesAware;
 import lombok.Setter;
 
@@ -60,6 +61,16 @@ public class EzyJpaConfiguration implements
     }
 
     private DataSource dataSource() {
+        DataSource dataSource = (DataSource) singletonFactory
+            .getSingleton(
+                EzyBeanKey.of(
+                "sharedDataSource",
+                DataSource.class
+            )
+        );
+        if (dataSource != null) {
+            return dataSource;
+        }
         return new EzyJpaDataSourceLoader()
             .properties(properties, "datasource")
             .load();
