@@ -9,6 +9,8 @@ import com.tvd12.test.util.RandomUtil;
 import org.testng.annotations.Test;
 
 import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
+import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.Properties;
 import java.util.Set;
@@ -16,8 +18,33 @@ import java.util.Set;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.*;
+import static org.testng.Assert.assertSame;
 
 public class EzyJpaConfigurationTest {
+
+    @Test
+    public void dataSourceWithSharedDataSource() throws Exception {
+        // given
+        EzySingletonFactory singletonFactory = mock(EzySingletonFactory.class);
+        DataSource dataSource = mock(DataSource.class);
+        when(singletonFactory.getSingleton(EzyBeanKey.of(
+            "sharedDataSource",
+            DataSource.class
+        ))).thenReturn(dataSource);
+
+        EzyJpaConfiguration sut = new EzyJpaConfiguration();
+        sut.setSingletonFactory(singletonFactory);
+
+        Method method = EzyJpaConfiguration.class
+            .getDeclaredMethod("dataSource");
+        method.setAccessible(true);
+
+        // when
+        DataSource actual = (DataSource) method.invoke(sut);
+
+        // then
+        assertSame(actual, dataSource);
+    }
 
     @Test
     public void autoConfigWithSharedDatabaseContext() {
