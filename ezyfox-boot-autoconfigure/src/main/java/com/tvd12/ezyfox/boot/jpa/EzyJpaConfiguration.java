@@ -16,6 +16,8 @@ import lombok.Setter;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.Collections;
+import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
@@ -38,13 +40,15 @@ public class EzyJpaConfiguration implements
 
     @Override
     public void autoConfig() {
-        addRepositoriesFromDatabaseContextToSingletonFactory(
-            databaseContext(),
-            singletonFactory
-        );
+        for (EzyDatabaseContext databaseContext : databaseContexts()) {
+            addRepositoriesFromDatabaseContextToSingletonFactory(
+                databaseContext,
+                singletonFactory
+            );
+        }
     }
 
-    private EzyDatabaseContext databaseContext() {
+    private List<EzyDatabaseContext> databaseContexts() {
         EzyDatabaseContext databaseContext = (EzyDatabaseContext) singletonFactory
             .getSingleton(
                 EzyBeanKey.of(
@@ -53,8 +57,26 @@ public class EzyJpaConfiguration implements
                 )
             );
         if (databaseContext != null) {
-            return databaseContext;
+            return Collections.singletonList(databaseContext);
         }
+        EzyJpaDatabaseContextsFactory databaseContextsFactory =
+            (EzyJpaDatabaseContextsFactory) singletonFactory.getSingleton(
+                EzyBeanKey.of(
+                    "sharedDatabaseContextsFactory",
+                    EzyJpaDatabaseContextsFactory.class
+                )
+            );
+        if (databaseContextsFactory != null) {
+            return databaseContextsFactory.createDatabaseContexts(
+                properties,
+                packagesToScan,
+                singletonFactory
+            );
+        }
+        return Collections.singletonList(defaultDatabaseContext());
+    }
+
+    private EzyDatabaseContext defaultDatabaseContext() {
         return new EzyJpaDatabaseContextBuilder()
             .properties(properties)
             .entityManagerFactory(entityManagerFactory())

@@ -4,6 +4,7 @@ import com.tvd12.ezydata.database.EzyDatabaseContext;
 import com.tvd12.ezyfox.bean.EzySingletonFactory;
 import com.tvd12.ezyfox.bean.impl.EzyBeanKey;
 import com.tvd12.ezyfox.boot.jpa.EzyJpaConfiguration;
+import com.tvd12.ezyfox.boot.jpa.EzyJpaDatabaseContextsFactory;
 import com.tvd12.properties.file.reader.BaseFileReader;
 import com.tvd12.test.util.RandomUtil;
 import org.testng.annotations.Test;
@@ -11,6 +12,7 @@ import org.testng.annotations.Test;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Properties;
 import java.util.Set;
@@ -65,6 +67,55 @@ public class EzyJpaConfigurationTest {
 
         // then
         verify(databaseContext).getRepositories();
+        verify(singletonFactory, never()).getSingleton(EzyBeanKey.of(
+            "sharedEntityManagerFactory",
+            EntityManagerFactory.class
+        ));
+    }
+
+    @Test
+    public void autoConfigWithSharedDatabaseContextsFactory() {
+        // given
+        EzySingletonFactory singletonFactory = mock(EzySingletonFactory.class);
+        EzyDatabaseContext databaseContext1 = mock(EzyDatabaseContext.class);
+        UserRepo userRepo = mock(UserRepo.class);
+        when(databaseContext1.getRepositories()).thenReturn(
+            Collections.singletonMap(UserRepo.class, userRepo)
+        );
+        EzyDatabaseContext databaseContext2 = mock(EzyDatabaseContext.class);
+        when(databaseContext2.getRepositories()).thenReturn(Collections.emptyMap());
+
+        Properties properties = new Properties();
+        Set<String> packagesToScan = Collections.singleton("com.tvd12.ezyfox.boot.test.jpa");
+        EzyJpaDatabaseContextsFactory databaseContextsFactory =
+            mock(EzyJpaDatabaseContextsFactory.class);
+        when(databaseContextsFactory.createDatabaseContexts(
+            properties,
+            packagesToScan,
+            singletonFactory
+        )).thenReturn(Arrays.asList(databaseContext1, databaseContext2));
+        when(singletonFactory.getSingleton(EzyBeanKey.of(
+            "sharedDatabaseContextsFactory",
+            EzyJpaDatabaseContextsFactory.class
+        ))).thenReturn(databaseContextsFactory);
+
+        EzyJpaConfiguration sut = new EzyJpaConfiguration();
+        sut.setPackagesToScan(packagesToScan);
+        sut.setProperties(properties);
+        sut.setSingletonFactory(singletonFactory);
+
+        // when
+        sut.config();
+
+        // then
+        verify(databaseContextsFactory).createDatabaseContexts(
+            properties,
+            packagesToScan,
+            singletonFactory
+        );
+        verify(databaseContext1).getRepositories();
+        verify(databaseContext2).getRepositories();
+        verify(singletonFactory).addSingleton("userRepo", userRepo);
         verify(singletonFactory, never()).getSingleton(EzyBeanKey.of(
             "sharedEntityManagerFactory",
             EntityManagerFactory.class
